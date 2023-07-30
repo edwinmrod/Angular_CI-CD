@@ -31,7 +31,9 @@ jobs:
           echo "AWS_DEFAULT_REGION=us-east-1" >> $GITHUB_ENV
 
       - name: Deploy to S3
-        run: aws s3 sync dist/ s3://curso-s3-cloudfront --delete
+        run: |
+          aws s3 sync dist/ s3://your-s3-bucket-name
 
       - name: Invalidate CloudFront Cache
-        run: aws cloudfront create-invalidation --distribution-id E36QHG0DOFVDIK --paths "/*"
+        run: |
+          aws cloudfront create-invalidation --distribution-id your-cloudfront-distribution-id --paths "/*"
