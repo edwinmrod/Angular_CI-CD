@@ -40,8 +40,5 @@ jobs:
           
       - name: Deploy to S3
         run: |
-          aws s3 sync ./ s3://curso-s3-cloudfront --request-payer requester
+          aws s3 sync ./dist s3://curso-s3-cloudfront --request-payer requester
 
-      - name: Invalidate CloudFront Cache
-        run: |
-          aws cloudfront create-invalidation --distribution-id your-cloudfront-distribution-id --paths "/*"
